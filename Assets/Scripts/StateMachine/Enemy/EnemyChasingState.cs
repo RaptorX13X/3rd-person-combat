@@ -41,13 +41,17 @@ public class EnemyChasingState : EnemyBaseState
 
     private void MoveToPlayer(float deltaTime)
     {
-        stateMachine.Agent.destination = stateMachine.Player.transform.position;
-        Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+        if (stateMachine.Agent.isOnNavMesh)
+        {
+            stateMachine.Agent.destination = stateMachine.Player.transform.position;
+            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+        }
         stateMachine.Agent.velocity = stateMachine.CharacterController.velocity;
     }
 
     private bool IsInAttackRange()
     {
+        if (stateMachine.Player.IsDead) { return false;}
         float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
     }

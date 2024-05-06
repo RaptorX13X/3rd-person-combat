@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ragdoll : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController controller;
-
-    private Collider[] allColliders;
-    private Rigidbody[] allRigidbodies;
+    
+    public Collider[] allColliders;
+    public Rigidbody[] allRigidbodies;
     private void Start()
     {
         allColliders = GetComponentsInChildren<Collider>(true);
@@ -36,8 +37,20 @@ public class Ragdoll : MonoBehaviour
                 rigidbody.useGravity = isRagdoll;
             }
         }
-
+        
         controller.enabled = !isRagdoll;
         animator.enabled = !isRagdoll;
+    }
+    
+    public void AddForce(Vector3 direction)
+    {
+        foreach (Rigidbody rigidbody in allRigidbodies)
+        {
+            if (rigidbody.gameObject.CompareTag("Ragdoll"))
+            {
+                rigidbody.velocity = direction * 10f;
+                rigidbody.AddForce(Random.value, Random.value, Random.value);
+            }
+        }
     }
 }

@@ -58,7 +58,7 @@ public class PlayerAttackingState : PlayerBaseState
     private void TryApplyForce()
     {
         if (alreadyAppliedForce ) {return;}
-        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
+        stateMachine.ForceReceiver.Translate(stateMachine.transform.forward * attack.Force);
         alreadyAppliedForce = true;
     }
     private void TryComboAttack(float normalizedTime)

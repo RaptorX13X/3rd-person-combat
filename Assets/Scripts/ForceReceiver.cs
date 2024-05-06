@@ -38,9 +38,9 @@ public class ForceReceiver : MonoBehaviour
         }
     }
 
-    public void AddForce(Vector3 force)
+    public void Translate(Vector3 translation)
     {
-        impact += force;
+        impact += translation;
         if (agent != null)
         {
             agent.enabled = false;

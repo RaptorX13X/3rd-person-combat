@@ -32,7 +32,7 @@ public class WeaponDamage : MonoBehaviour
         if (other.TryGetComponent(out ForceReceiver forceReceiver))
         {
             Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
-            forceReceiver.AddForce(direction * knockback);
+            forceReceiver.Translate(direction * knockback);
         }
     }
 

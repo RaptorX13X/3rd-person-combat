@@ -49,7 +49,7 @@ public class Ragdoll : MonoBehaviour
             if (rigidbody.gameObject.CompareTag("Ragdoll"))
             {
                 rigidbody.velocity = direction * 10f;
-                rigidbody.AddExplosionForce(Random.value * 50, rigidbody.position, 3f);
+                rigidbody.AddExplosionForce(Random.value * 50f, rigidbody.position, 5f);
                 //rigidbody.AddForce(Random.value, Random.value, Random.value);
             }
         }

@@ -7,7 +7,7 @@ In this project I wanted to showcase the use of state machine in player and non-
 Working this way protects the game from attempting to use behaviors it shouldn't have access to at this point. For example player is not allowed to attack while blocking, player has to first leave the blocking state to be able to hit the enemy.
 
 ### How does it work
-```
+```csharp
 public class PlayerTargetingState : PlayerBaseState
 {
     private readonly int TargetingBlendtreeHash = Animator.StringToHash("TargetingBlendTree");
